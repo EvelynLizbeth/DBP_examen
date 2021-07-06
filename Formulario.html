@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    function validateFormulario() { 
+        var x = document.forms["myForm"]["name"].value; 
+        var y = document.forms["myForm"]["description"].value; 
+        var hom= /[0-9]/.test(x); var comp=true; 
+        if (x == "") { 
+            document.getElementById("Name").innerHTML = "Debe escribir su nombre"; 
+            comp=false; } 
+        if (y == "") { 
+            document.getElementById("Description").innerHTML = "Debe escribir una descripcion"; 
+            comp=false; 
+        } 
+        if (hom==true) { 
+            document.getElementById("Name").innerHTML ="El nombre debe contener solo caracteres alfabeticos"; 
+            comp=false; 
+        } 
+        return comp;
+    }
+    
+</script>
+</head>
+<body> 
+<div> 
+<h2>REGISTRO DE CATEGORY</h2>
+<form name="myForm" action="/CategoryRestService/Add" onsubmit="return validateFormulario()" method="get" > 
+    <label for="name">Nombres:</label> 
+    <input type="text" id="name" size="40"><p style="color:rgb(209, 82, 82)" id="Name"></p> 
+    <label for="description">Descripcion:</label> 
+    <input type="text" id="description" size="50"><p style="color:red" id="Description"></p>
+    <input type="submit" value="Enviar">
+</form>
+</div>
+</body> 
+</html>
